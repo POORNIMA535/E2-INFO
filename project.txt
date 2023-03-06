@@ -1,0 +1,27 @@
+CREATE TABLE Users (
+  user_id INT PRIMARY KEY,
+  name VARCHAR(50),
+  email VARCHAR(50),
+  password VARCHAR(50),
+  batch_year INT,
+  department VARCHAR(50)
+);
+
+CREATE TABLE Ratings (
+  rating_id INT PRIMARY KEY,
+  rated_by INT,
+  rated_user INT,
+  rating_score INT,
+  comments VARCHAR(200),
+  FOREIGN KEY (rated_by) REFERENCES Users(user_id),
+  FOREIGN KEY (rated_user) REFERENCES Users(user_id)
+);
+
+CREATE TABLE Friends (
+  friendship_id INT PRIMARY KEY,
+  user1 INT,
+  user2 INT,
+  status VARCHAR(20),
+  FOREIGN KEY (user1) REFERENCES Users(user_id),
+  FOREIGN KEY (user2) REFERENCES Users(user_id)
+);
